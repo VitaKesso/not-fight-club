@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Not Fight Club</title>
+    <link rel="stylesheet" href="fight.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu">
+            <div class="main">Main</div>
+            <div class="icons">
+                <img src="img/home.svg" alt="home">
+                <img src="img/account.svg" alt="account">
+                <img src="img/settings.svg" alt="settings">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main first"><button>Fight!</button></div>
+        <div class="game">
+            <div class="field">
+                <div class="player">
+                    <div class="name" id="player_1">9457</div>
+                    <div class="pic" id="heroes"><img src="img/hero/scott.jpg" height="500" width="100%" alt="hero"></div>
+                    <div class="hp" id="hp"></div>
+                    <div class="hp_label">150/150</div>
+                </div>
+                <div class="display"> Choose which body to defend and wich to attack
+                    <div class="choose">
+                        <div class="attack">Attack zones
+                            <div class="choice">
+                                <label for="Head">Head</label>
+                                <input type="radio" id="Head" name="attack">
+                            </div>
+                            <div class="choice">
+                                <label for="Neck">Neck</label>
+                                <input type="radio" id="Neck" name="attack">
+                            </div>
+                            <div class="choice">
+                                <label for="Body">Body</label>
+                                <input type="radio" id="Body" name="attack">
+                            </div>
+                            <div class="choice">
+                                <label for="Belly">Belly</label>
+                                <input type="radio" id="Belly" name="attack">
+                            </div>
+                            <div class="choice">
+                                <label for="Legs">Legs</label>
+                                <input type="radio" id="Legs" name="attack">
+                            </div>
+                        </div>
+                        <div class="devide"></div>
+                        <div class="defence">Defence zones
+                            <div class="choice">
+                                <input type="radio" id="Head">
+                                <label for="Head">Head</label>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" id="Neck">
+                                <label for="Neck">Neck</label>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" id="Body">
+                                <label for="Body">Body</label>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" id="Belly">
+                                <label for="Belly">Belly</label>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" id="Legs">
+                                <label for="Legs">Legs</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button>Attack!</button>
+                </div>
+                <div class="player">
+                    <div class="name" id="player_1">58920</div>
+                    <div class="pic" id="heroes"><img src="img/enemy/gideon.jpg" height="500" width="100%" alt="enemy"></div>
+                    <div class="hp" id="hp"></div>
+                    <div class="hp_label">150/150</div>
+                </div>
+            </div>
+            <div class="log"></div>
+        </div>
+    </main>
+</body>
