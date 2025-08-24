@@ -92,6 +92,28 @@ document.getElementById('attack').addEventListener('click', function () {
     })
 
     calculateProgress()
+
+    if (heroHp == 0 || enemyHp == 0) {
+        if (enemyHp == 0) {
+            Cookies.set('win', (Cookies.get('win') | 0) + 1)
+        } else {
+            Cookies.set('lose', (Cookies.get('lose') | 0) + 1)
+        }
+
+        document.querySelector('.popup_center').classList.add('active')
+
+        enemyIndex = (Math.ceil(Math.random() * 6) - 1);
+        enemyName = enemies[enemyIndex].name
+        document.getElementById('player_2').innerHTML = enemyName
+        document.getElementById('enemy_pic').src = enemies[enemyIndex].img
+
+        enemyMaxHp = enemies[enemyIndex].maxHp;
+        enemyHp = enemies[enemyIndex].maxHp;
+        heroHp = 150;
+        enemyDamage = enemies[enemyIndex].damage;
+        calculateProgress()
+        document.querySelector('.popup_center').classList.add('active')
+    }
 })
 
 function calculateProgress() {
