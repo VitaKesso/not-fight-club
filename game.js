@@ -1,4 +1,5 @@
 let userName = Cookies.get('name')
+let enemyName = 'Your Nightmare'
 document.getElementById('player_1').innerHTML = userName
 
 let enemyMaxHp = 150;
@@ -7,6 +8,7 @@ let heroHp = 150;
 let heroMaxHp = 150;
 let enemyDamage = 30;
 let heroDamage = 30;
+
 calculateProgress()
 
 document.getElementById('attack').addEventListener('click', function () {
@@ -18,19 +20,19 @@ document.getElementById('attack').addEventListener('click', function () {
     console.log('враг атакует: ' + enemyAttack.map(getZoneName) + ' защищает: ' + enemyDefence.map(getZoneName))
 
     if (enemyDefence.indexOf(attack) == -1) {
-        enemyHp = enemyHp - heroDamage;
-        console.log('Игрок попал противнику в ' + getZoneName(attack) + ' и нанёс ' + heroDamage +' урона')
+        enemyHp = Math.max(enemyHp - heroDamage, 0);
+        addLog(heroName() + ' попал ' + villainName() + ' в ' + getZoneName(attack) + ' и нанёс ' + damage(heroDamage) + ' урона')
     } else {
-        console.log('Противник защитился от атаки в ' + getZoneName(attack) + ' урона нет')
+        addLog(villainName() + ' защитился от атаки ' + heroName() + ' в ' + getZoneName(attack) + ' урона нет')
     }
 
     enemyAttack.forEach(kick => {
         if (defence.indexOf(kick) == -1) {
-            heroHp = heroHp - enemyDamage;
-            console.log('Противник попал игроку в ' + getZoneName(attack) + ' и нанёс ' + heroDamage +' урона')
+            heroHp = Math.max(heroHp - enemyDamage, 0);
+            addLog(villainName() + ' попал ' + heroName() + ' в ' + getZoneName(kick) + ' и нанёс ' + damage(enemyDamage) + ' урона')
         } else {
-        console.log('Игрок защитился от атаки в ' + getZoneName(attack) + ' урона нет')
-    }
+            addLog(heroName() + ' защитился от атаки ' + villainName() + ' в ' + getZoneName(kick) + ' урона нет')
+        }
     })
 
     calculateProgress()
@@ -44,7 +46,7 @@ function calculateProgress() {
 }
 
 document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener('click', function() {
+    radio.addEventListener('click', function () {
         setTimeout(canYouAttack, 100)
     })
 })
@@ -72,24 +74,57 @@ function getDefence() {
     if (checked.length != 2) {
         return -1
     }
-    return Array.from(checked).map(radio => Array.from(radios).indexOf(radio)) 
+    return Array.from(checked).map(radio => Array.from(radios).indexOf(radio))
 }
 
 /* use switch */
 function getZoneName(index) {
-    switch(index) {
-        case 0: return 'Head';
-        case 1: return 'Neck';
-        case 2: return 'Body';
-        case 3: return 'Belly';
-        case 4: return 'Legs';
+    let zone;
+    switch (index) {
+        case 0:
+            zone = 'Head';
+            break;
+        case 1:
+            zone = 'Neck';
+            break;
+        case 2:
+            zone = 'Body';
+            break;
+        case 3:
+            zone = 'Belly';
+            break;
+        case 4:
+            zone = 'Legs';
+            break;
     }
+    return '<span class="zone">' + zone + '</span>'
 }
 
 function getRandomZones(count) {
     let result = new Set();
-    while(result.size < count) {
+    while (result.size < count) {
         result.add(Math.ceil(Math.random() * 5) - 1);
     }
     return Array.from(result);
+}
+
+function addLog(message) {
+    let log = document.getElementById('log')
+    let line = document.createElement('div')
+    line.innerHTML = message;
+    log.appendChild(line)
+    log.scrollTop = log.scrollHeight;
+}
+
+
+function heroName() {
+    return '<span class="hero_name">' + Cookies.get('name') + '</span>'
+}
+
+function villainName() {
+    return '<span class="enemy_name">' + enemyName + '</span>'
+}
+
+function damage(amount) {
+     return '<span class="damage">' + amount + '</span>'
 }

@@ -147,3 +147,24 @@ button {
     width: 1px;
     background-color: black;
 }
+
+.log {
+    height: 25%;
+    overflow-y: auto;
+}
+
+.hero_name {
+    color:dodgerblue;
+}
+
+.enemy_name {
+    color:dodgerblue;
+}
+
+.zone {
+    color:goldenrod;
+}
+
+.damage {
+    color: brown;
+}
