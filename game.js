@@ -1,3 +1,6 @@
+let userName = Cookies.get('name')
+document.getElementById('player_1').innerHTML = userName
+
 document.getElementById('attack').addEventListener('click', function () {
     let attack = getAttack()
     let defence = getDefence()

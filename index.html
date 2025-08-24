@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Not Fight Club</title>
     <link rel="stylesheet" href="fight.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 </head>
 
 <body>
+    <div class="registration active">Create Your Character
+        <div class="enter">
+            <input type="text" id="name" style="border-color: aqua;">
+        </div>
+        <button id="create">Create</button>
+    </div>
     <header class="header">
         <div class="menu">
             <div class="main">Main</div>
@@ -25,8 +32,11 @@
             <div class="field">
                 <div class="player">
                     <div class="name" id="player_1">9457</div>
-                    <div class="pic" id="heroes"><img src="img/hero/scott.jpg" height="500" width="100%" alt="hero"></div>
-                    <div class="hp" id="hp"></div>
+                    <div class="pic" id="heroes"><img src="img/hero/scott.jpg" height="500" width="100%" alt="hero">
+                    </div>
+                    <div class="hp" id="hp">
+                        <div class="progress"></div>
+                    </div>
                     <div class="hp_label">150/150</div>
                 </div>
                 <div class="display"> Choose which body to defend and which to attack
@@ -80,9 +90,12 @@
                     <button id="attack" disabled>Attack!</button>
                 </div>
                 <div class="player">
-                    <div class="name" id="player_1">58920</div>
-                    <div class="pic" id="heroes"><img src="img/enemy/gideon.jpg" height="500" width="100%" alt="enemy"></div>
-                    <div class="hp" id="hp"></div>
+                    <div class="name" id="player_1">Your Nightmare</div>
+                    <div class="pic" id="heroes"><img src="img/enemy/gideon.jpg" height="500" width="100%" alt="enemy">
+                    </div>
+                    <div class="hp" id="hp">
+                        <div class="progress"></div>
+                    </div>
                     <div class="hp_label">150/150</div>
                 </div>
             </div>
@@ -92,4 +105,5 @@
     <script src="radio.js"></script>
     <script src="home.js"></script>
     <script src="game.js"></script>
+    <script src="registration.js"></script>
 </body>
