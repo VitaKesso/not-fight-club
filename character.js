@@ -4,6 +4,7 @@ document.getElementById('character').addEventListener('click', function () {
     document.querySelector('.main').innerHTML = 'Character'
 
     document.querySelector('.winlose').innerHTML = 'Win: ' + (Cookies.get('win') | 0 ) + " Lose: " + (Cookies.get('lose') | 0 ) 
+    document.getElementById('character_name').innerHTML = Cookies.get('name')
 })
 
 document.getElementById('home').addEventListener('click', function () {
