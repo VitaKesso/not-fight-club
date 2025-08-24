@@ -1,6 +1,14 @@
 let userName = Cookies.get('name')
 document.getElementById('player_1').innerHTML = userName
 
+let enemyMaxHp = 150;
+let enemyHp = 150;
+let heroHp = 150;
+let heroMaxHp = 150;
+let enemyDamage = 30;
+let heroDamage = 30;
+calculateProgress()
+
 document.getElementById('attack').addEventListener('click', function () {
     let attack = getAttack()
     let defence = getDefence()
@@ -8,7 +16,32 @@ document.getElementById('attack').addEventListener('click', function () {
     let enemyDefence = getRandomZones(2)
     console.log('игрок атакует: ' + getZoneName(attack) + ' защищает: ' + defence.map(getZoneName))
     console.log('враг атакует: ' + enemyAttack.map(getZoneName) + ' защищает: ' + enemyDefence.map(getZoneName))
+
+    if (enemyDefence.indexOf(attack) == -1) {
+        enemyHp = enemyHp - heroDamage;
+        console.log('Игрок попал противнику в ' + getZoneName(attack) + ' и нанёс ' + heroDamage +' урона')
+    } else {
+        console.log('Противник защитился от атаки в ' + getZoneName(attack) + ' урона нет')
+    }
+
+    enemyAttack.forEach(kick => {
+        if (defence.indexOf(kick) == -1) {
+            heroHp = heroHp - enemyDamage;
+            console.log('Противник попал игроку в ' + getZoneName(attack) + ' и нанёс ' + heroDamage +' урона')
+        } else {
+        console.log('Игрок защитился от атаки в ' + getZoneName(attack) + ' урона нет')
+    }
+    })
+
+    calculateProgress()
 })
+
+function calculateProgress() {
+    document.getElementById('progress').style.width = heroHp / heroMaxHp * 100 + '%'
+    document.getElementById('progress_enemy').style.width = enemyHp / enemyMaxHp * 100 + '%'
+    document.getElementById('hp_label').innerHTML = heroHp + ' / ' + heroMaxHp
+    document.getElementById('hp_label_enemy').innerHTML = enemyHp + ' / ' + enemyMaxHp
+}
 
 document.querySelectorAll('input[type="radio"]').forEach(radio => {
     radio.addEventListener('click', function() {
