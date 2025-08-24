@@ -20,19 +20,44 @@
         <div class="menu">
             <div class="main">Main</div>
             <div class="icons">
-                <img src="img/home.svg" alt="home">
-                <img src="img/account.svg" alt="account">
-                <img src="img/settings.svg" alt="settings">
+                <img id="home" src="img/home.svg" alt="home">
+                <img id="character" src="img/account.svg" alt="account">
+                <img id="settings" src="img/settings.svg" alt="settings">
             </div>
         </div>
     </header>
     <main>
+        <div class="popup_center">
+            <div class="popup">
+                Бой завершён, возвращайтесь скорее
+                <div class="cross"><img src="img/cross.svg" alt="cross"></div>
+            </div>
+        </div>
+        <div class="character">
+            <div class="info">
+                <img id="scott" src="img/hero/scott.jpg" height="500" width="625" alt="hero">
+                <div class="winlose">Win: 0, Lose: 0</div>
+            </div>
+            <div class="avatars">
+                <img id="avatar1" src="img/hero/scott.jpg" height="250" width="300" alt="hero">
+                <img id="avatar2" src="img/hero/ramona.jpg" height="250" width="300" alt="hero">
+                <img id="avatar3" src="img/hero/wallace.jpg" height="250" width="300" alt="hero">
+                <img id="avatar4" src="img/hero/knives.jpg" height="250" width="300" alt="hero">
+            </div>
+        </div>
+        <div class="settings">
+            Edit Your Character
+            <div class="enter">
+                <input type="text" id="name" style="border-color: aqua;">
+            </div>
+            <button id="edit">Edit</button>
+        </div>
         <div class="first active"><button id="fight">Fight!</button></div>
         <div class="game">
             <div class="field">
                 <div class="player">
                     <div class="name" id="player_1">9457</div>
-                    <div class="pic" id="heroes"><img src="img/hero/scott.jpg" height="500" width="100%" alt="hero">
+                    <div class="pic"><img id="heroes" src="img/hero/scott.jpg" height="500" width="100%" alt="hero">
                     </div>
                     <div class="hp" id="hp">
                         <div class="progress" id="progress"></div>
@@ -90,8 +115,9 @@
                     <button id="attack" disabled>Attack!</button>
                 </div>
                 <div class="player">
-                    <div class="name" id="player_1">Your Nightmare</div>
-                    <div class="pic" id="heroes"><img src="img/enemy/gideon.jpg" height="500" width="100%" alt="enemy">
+                    <div class="name" id="player_2">Your Nightmare</div>
+                    <div class="pic"><img id="enemy_pic" src="img/enemy/gideon.jpg" height="500" width="100%"
+                            alt="enemy">
                     </div>
                     <div class="hp" id="hp">
                         <div class="progress" id="progress_enemy"></div>
@@ -106,4 +132,7 @@
     <script src="home.js"></script>
     <script src="game.js"></script>
     <script src="registration.js"></script>
+    <script src="popup.js"></script>
+    <script src="character.js"></script>
+    <script src="settings.js"></script>
 </body>
