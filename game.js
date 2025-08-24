@@ -1,12 +1,68 @@
-let userName = Cookies.get('name')
-let enemyName = 'Your Nightmare'
-document.getElementById('player_1').innerHTML = userName
+let enemies = [
+    {
+        name: 'Matthew',
+        img: 'img/enemy/matthew.jpg',
+        maxHp: 100,
+        attacksCount: 1,
+        defenceCount: 1,
+        damage: 20,
+    },
+    {
+        name: 'Lucas',
+        img: 'img/enemy/lucas.jpg',
+        maxHp: 150,
+        attacksCount: 1,
+        defenceCount: 2,
+        damage: 35,
+    },
+    {
+        name: 'Todd',
+        img: 'img/enemy/todd.jpg',
+        maxHp: 150,
+        attacksCount: 2,
+        defenceCount: 1,
+        damage: 20,
+    },
+    {
+        name: 'Roxy',
+        img: 'img/enemy/roxy.jpg',
+        maxHp: 130,
+        attacksCount: 1,
+        defenceCount: 1,
+        damage: 25,
+    },
+    {
+        name: 'Kyle & Ken',
+        img: 'img/enemy/kyle&ken.jpg',
+        maxHp: 200,
+        attacksCount: 1,
+        defenceCount: 3,
+        damage: 20,
+    },
+    {
+        name: 'Gideon',
+        img: 'img/enemy/gideon.jpg',
+        maxHp: 300,
+        attacksCount: 2,
+        defenceCount: 2,
+        damage: 30,
+    },
+]
 
-let enemyMaxHp = 150;
-let enemyHp = 150;
+let enemyIndex = (Math.ceil(Math.random() * 6) - 1);
+
+let userName = Cookies.get('name')
+let enemyName = enemies[enemyIndex].name
+
+document.getElementById('player_1').innerHTML = userName
+document.getElementById('player_2').innerHTML = enemyName
+document.getElementById('enemy_pic').src = enemies[enemyIndex].img
+
+let enemyMaxHp = enemies[enemyIndex].maxHp;
+let enemyHp = enemies[enemyIndex].maxHp;
 let heroHp = 150;
 let heroMaxHp = 150;
-let enemyDamage = 30;
+let enemyDamage = enemies[enemyIndex].damage;
 let heroDamage = 30;
 
 calculateProgress()
@@ -14,8 +70,8 @@ calculateProgress()
 document.getElementById('attack').addEventListener('click', function () {
     let attack = getAttack()
     let defence = getDefence()
-    let enemyAttack = getRandomZones(1)
-    let enemyDefence = getRandomZones(2)
+    let enemyAttack = getRandomZones(enemies[enemyIndex].attacksCount)
+    let enemyDefence = getRandomZones(enemies[enemyIndex].defenceCount)
     console.log('игрок атакует: ' + getZoneName(attack) + ' защищает: ' + defence.map(getZoneName))
     console.log('враг атакует: ' + enemyAttack.map(getZoneName) + ' защищает: ' + enemyDefence.map(getZoneName))
 
@@ -126,5 +182,5 @@ function villainName() {
 }
 
 function damage(amount) {
-     return '<span class="damage">' + amount + '</span>'
+    return '<span class="damage">' + amount + '</span>'
 }
