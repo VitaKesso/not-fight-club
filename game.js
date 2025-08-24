@@ -45,7 +45,7 @@ let enemies = [
         maxHp: 300,
         attacksCount: 2,
         defenceCount: 2,
-        damage: 30,
+        damage: 15,
     },
 ]
 
